@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const PizzaBlock = ({ name, imageUrl, types, sizes }) => {
+const PizzaBlock = ({ name, imageUrl, types, sizes, price, isLoading }) => {
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = [26, 30, 40];
 
@@ -50,7 +50,7 @@ const PizzaBlock = ({ name, imageUrl, types, sizes }) => {
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от 395 ₽</div>
+        <div className="pizza-block__price">от {price} ₽</div>
         <div className="button button--outline button--add">
           <svg
             width="12"
@@ -77,6 +77,7 @@ PizzaBlock.propTypes = {
   price: PropTypes.number.isRequired,
   types: PropTypes.arrayOf(PropTypes.number),
   sizes: PropTypes.arrayOf(PropTypes.number),
+  isLoading: PropTypes.bool,
 };
 
 PizzaBlock.defaultProps = {
